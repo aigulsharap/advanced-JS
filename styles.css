@@ -1,0 +1,13 @@
+body {
+     background-color: #1c1b21; 
+     text-align: center;
+     font-size: 24px;
+}
+
+.category {
+    color: aliceblue;
+}
+
+.select-category {
+    width: 200px;
+}
