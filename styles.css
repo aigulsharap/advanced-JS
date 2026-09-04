@@ -11,3 +11,36 @@ body {
 .select-category {
     width: 200px;
 }
+
+.ideas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.idea {
+    width: 700px;
+    height: 70px;
+    box-sizing: border-box;
+    border: solid rgb(128, 117, 117);
+    border-radius: 5px;
+    color: rgb(226, 211, 241);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ideas__btn {
+    margin-top: 15px;
+    width: 700px;
+    height: 50px;
+    border: none;
+    background-color: rgb(126, 87, 233);
+    border-radius: 5px;
+    font-size: 24px;
+    font-family: inherit;
+    color: rgb(226, 211, 241);
+    cursor: pointer;
+}
