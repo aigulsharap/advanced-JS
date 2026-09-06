@@ -146,38 +146,35 @@ master();
 
 /* Упражнение - Генератор активностей */
 
-const ideas = [];
+const ideasContainer = document.querySelector('.ideas');
 
 function renderActivities() {
-    document.querySelector('.ideas').innerHTML = `
-      <div class="idea" id="1"></div>
-      <div class="idea" id="2"></div>
-      <div class="idea" id="3"></div>
+    ideasContainer.innerHTML = `
+      <div class="idea"></div>
+      <div class="idea"></div>
+      <div class="idea"></div>
       <button class="ideas__btn" onclick="getIdeas()">What should I do?</button>
     `
 }
 
-renderActivities();
-
 async function getIdea() {
-    try {
         const response = await fetch('https://bored.api.lewagon.com/api/activity');
         if(!response.ok) {
             throw new Error(response.status);
         }
         const data = await response.json();
-        const idea = data.activity;
-        return idea;
-    } catch(e) {
-        console.log(console.error(e));
-    }   
+        return data.activity;
 }
 
 async function getIdeas() {
-    ideas.splice(0, ideas.length);
-    const newIdeas = await Promise.all([getIdea(), getIdea(), getIdea()]);
-    ideas.push(...newIdeas);
-    document.getElementById('1').textContent = ideas[0];
-    document.getElementById('2').textContent = ideas[1];
-    document.getElementById('3').textContent = ideas[2];
+    try {
+        const ideas = await Promise.all([getIdea(), getIdea(), getIdea()]);
+        document.querySelectorAll('.idea').forEach((element, index) => {
+            element.textContent = ideas[index];
+        });
+    } catch(e) {
+        console.error(e);
+    }
 }
+
+renderActivities();
